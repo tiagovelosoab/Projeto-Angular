@@ -1,0 +1,70 @@
+<div *ngIf="controlSec==1">
+  <br>
+  <div class="panel panel-primary text-center ">
+      <div class="panel-heading">
+        <h2>Lista de usuários</h2>
+      </div>
+     <br>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+           <tr>
+              <th>Nome de Usuário</th>
+              <th>Email</th>
+             <th>Ações</th>
+            </tr>
+          </thead>
+         <tbody>
+           <tr *ngFor="let i of users">
+             <td [innerHTML]="i.split('\n')[1].trim()"></td>
+             <td [innerHTML]="i.split('\n')[2].trim()"></td>
+             <td><button class="btn btn-danger" (click)="excluir(i)">Excluir</button>
+                 <button  class="btn btn-info" style="margin-left: 10px">Atualizar</button>
+             </td>
+           </tr>
+          </tbody>
+       </table>
+     </div>
+     <button type="button" class="btn btn-success" (click)="inserir()">Inserir novo usuário</button>
+   </div>
+  </div>
+
+
+<div *ngIf="controlSec==2">
+  <form class="text-center border border-light p-5" [formGroup]='formGroup' (ngSubmit)='enviar()'>
+    <p class="h3 mb-4">Inserção de usuários</p>
+    <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control" type="text" (keydown.space)="$event.preventDefault()" formControlName="nome" placeholder="Nome de usuário"/>
+        <small class="form-text text-muted mb-3">Deve conter de 5 a 30 caracteres</small>
+    </div>
+    <div class="col-sm-6 offset-sm-3 text-center">
+       <input class="form-control mb-4" type="email" (keydown.space)="$event.preventDefault()" formControlName="email" placeholder="Email"/>
+    </div>
+    <div class="form-row mb-3 ">
+        <div class="col-lg-3 offset-lg-3 text-center ">
+            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="telefone" placeholder="Telefone" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"/>
+            <small class="form-text text-muted">Apenas caracteres numéricos (não use hífen)</small>
+        </div>
+        <div class="col-lg-3 offset-lg-0">    
+            <input class="form-control" type="text" formControlName="dataNascimento" placeholder="Data de nascimento" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" min="1900-01-01" [max]="data" />
+        </div>    
+    </div>
+    <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control" type="password" formControlName="senha" placeholder="Senha"/>
+        <small class="form-text text-muted mb-3">Deve conter de 8 a 40 caracteres</small>
+    </div>
+    <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control" type="password" formControlName="confirmaSenha" placeholder="Confirmar Senha"/>
+    </div>
+    <br> 
+    <div *ngIf="formGroup.invalid">
+    <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enviar</button>
+    </div>
+    <div *ngIf="formGroup.valid">
+    <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">Enviar</button>
+    </div>
+    <br>
+    <button type="button" class="btn btn-link" (click)="retornar()">Voltar a lista de usuários</button>
+</form>
+
+</div>

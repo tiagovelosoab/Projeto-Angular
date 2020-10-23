@@ -1,0 +1,14 @@
+<form class="text-center border border-light p-5" [formGroup]='formGroup' (ngSubmit)='enviar()'>
+    <p class="h3 mb-5">Recuperação de senha</p>
+    <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control mb-5" type="email" (keydown.space)="$event.preventDefault()" formControlName="email" placeholder="Email"/>
+    </div> 
+    <div *ngIf="formGroup.invalid">
+        <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enviar</button>
+    </div>
+    <div *ngIf="formGroup.valid">
+        <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">Enviar</button>
+    </div>
+    <br>
+    <button type="button" class="btn btn-link" (click)="fazerLogin()">Voltar a tela de login</button>
+</form>    
