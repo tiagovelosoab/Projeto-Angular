@@ -20,6 +20,7 @@ export class UsuariosComponent implements OnInit {
   @Input() users;
   @Output() usersChange=new EventEmitter<Array<string>>();
   @Input() usuarioAtual;
+  @Output() usuarioAtualChange=new EventEmitter<string>();
   @Input() controlSec;
   @Output() controlSecChange=new EventEmitter<number>();
   
@@ -102,6 +103,10 @@ export class UsuariosComponent implements OnInit {
         }
       }
       window.alert("Atualização bem sucedida");
+      if(this.usuarioATT==this.usuarioAtual){
+        this.usuarioAtual=this.formGroup.value.nome;
+        this.usuarioAtualChange.emit(this.usuarioAtual);
+      }
       this.users[this.numATT]=resultado;
       this.usersChange.emit(this.users);
       this.retornar();   
