@@ -19,7 +19,6 @@ export class CadastroComponent implements OnInit {
   @Output() controlChange=new EventEmitter<number>();
   @Input() users;
   @Output() usersChange=new EventEmitter<Array<string>>();
-  existente=false;
   constructor() {
     this.formGroup=new FormGroup({
       nome:new FormControl(null,Validators.compose([
@@ -64,30 +63,24 @@ export class CadastroComponent implements OnInit {
     ${this.formGroup.value.senha}
     `;
     if(this.formGroup.value.senha===this.formGroup.value.confirmaSenha){
-      this.existente=false;
       for(let i of this.users){
         if(i.split("\n")[1].trim()==this.formGroup.value.nome&&i.split("\n")[2].trim()==this.formGroup.value.email){
-          this.existente=true;
           window.alert("Nome de usuário e email já cadastrados, por favor tente novamente");
-          break;
+          return;
         }
         else if(i.split("\n")[1].trim()==this.formGroup.value.nome){
-          this.existente=true;
           window.alert("Nome de usuário já existente, por favor tente novamente");
-          break;
+          return;
         }
         else if(i.split("\n")[2].trim()==this.formGroup.value.email){
-          this.existente=true;
           window.alert("Email já cadastrado, por favor tente novamente");
-          break;
+          return;
         }
       }
-      if(this.existente==false){
-        window.alert("Cadastro bem sucedido\nUsuário:"+this.formGroup.value.nome+"\nEmail:"+this.formGroup.value.email);
-        this.users.push(resultado);
-        this.usersChange.emit(this.users);
-        this.controlChange.emit(1);
-      }
+      window.alert("Cadastro bem sucedido\nUsuário:"+this.formGroup.value.nome+"\nEmail:"+this.formGroup.value.email);
+      this.users.push(resultado);
+      this.usersChange.emit(this.users);
+      this.controlChange.emit(1);  
     }
     else{
       window.alert("Senhas não condizem, por favor tente novamente");

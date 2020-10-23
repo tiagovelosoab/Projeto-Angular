@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'angular-project';
   control=4;
   controlSec=1;
+  animais:Array<String>;
+  itens:Array<String>;
   users:Array<string>=[`
   tiago
   aaa@aaa
