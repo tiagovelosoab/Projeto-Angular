@@ -121,6 +121,7 @@ export class UsuariosComponent implements OnInit {
     this.formGroup.reset();
   }
   inserir(){
+    this.formGroup.reset();
     this.controlSecChange.emit(2);
   }
   enviar(){

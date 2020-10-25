@@ -25,6 +25,7 @@
           </tbody>
        </table>
      </div>
+     <br>
      <button type="button" class="btn btn-success" (click)="inserir()">Inserir novo usuário</button>
    </div>
   </div>
@@ -42,7 +43,7 @@
     </div>
     <div class="form-row mb-3 ">
         <div class="col-lg-3 offset-lg-3 text-center ">
-            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="telefone" placeholder="Telefone" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"/>
+            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="telefone" placeholder="Telefone" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
             <small class="form-text text-muted">Apenas caracteres numéricos (não use hífen)</small>
         </div>
         <div class="col-lg-3 offset-lg-0">    
@@ -81,7 +82,7 @@
     </div>
     <div class="form-row mb-3 ">
         <div class="col-lg-3 offset-lg-3 text-center ">
-            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="telefone" placeholder="Telefone" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"/>
+            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="telefone" placeholder="Telefone" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
             <small class="form-text text-muted">Apenas caracteres numéricos (não use hífen)</small>
         </div>
         <div class="col-lg-3 offset-lg-0">    

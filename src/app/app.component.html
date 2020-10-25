@@ -14,3 +14,7 @@
     <app-barra [control]="control" (controlChange)="control=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-barra>
     <app-usuarios [users]="users" (usersChange)="users-event" [usuarioAtual]="usuarioAtual" (usuarioAtualChange)="usuarioAtual=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-usuarios>
 </div>
+<div *ngIf="control==6">
+    <app-barra [control]="control" (controlChange)="control=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-barra>
+    <app-animais [animais]="animais" (animaisChange)="animais=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-animais>
+</div>
