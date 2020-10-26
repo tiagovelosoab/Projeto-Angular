@@ -18,3 +18,7 @@
     <app-barra [control]="control" (controlChange)="control=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-barra>
     <app-animais [animais]="animais" (animaisChange)="animais=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-animais>
 </div>
+<div *ngIf="control==7">
+    <app-barra [control]="control" (controlChange)="control=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-barra>
+    <app-itens [itens]="itens" (itensChange)="itens=$event" [controlSec]="controlSec" (controlSecChange)="controlSec=$event"></app-itens>
+</div>

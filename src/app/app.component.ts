@@ -8,17 +8,11 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'angular-project';
-  control=4;
+  control=1;
   controlSec=1;
   animais:Array<String>=[];
   itens:Array<String>=[];
-  users:Array<string>=[`
-  tiago
-  aaa@aaa
-  988924104
-  1999-04-09
-  12345678
-  `];
+  users:Array<string>=[];
   usuarioAtual=null;
 }
 

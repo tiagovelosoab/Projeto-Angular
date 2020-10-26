@@ -9,6 +9,7 @@ import { RecuperaSenhaComponent } from './recupera-senha/recupera-senha.componen
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BarraComponent } from './barra/barra.component';
 import { AnimaisComponent } from './animais/animais.component';
+import { ItensComponent } from './itens/itens.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AnimaisComponent } from './animais/animais.component';
     UsuariosComponent,
     BarraComponent,
     AnimaisComponent,
+    ItensComponent,
     
   ],
   imports: [

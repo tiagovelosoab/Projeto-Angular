@@ -1,0 +1,108 @@
+<div *ngIf="controlSec==1">
+    <br>
+    <div class="panel panel-primary text-center ">
+        <div class="panel-heading">
+          <h2>Lista de itens</h2>
+        </div>
+       <br>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+             <tr>
+                <th>Código do item</th>
+                <th>Nome do item</th>
+               <th>Ações</th>
+              </tr>
+            </thead>
+           <tbody>
+             <tr *ngFor="let i of itens">
+               <td [innerHTML]="i.split('\n')[1].trim()"></td>
+               <td [innerHTML]="i.split('\n')[2].trim()"></td>
+               <td><button class="btn btn-danger" (click)="excluir(i)">Excluir</button>
+                   <button  class="btn btn-info" style="margin-left: 10px" (click)="atualizar(i)">Atualizar</button>
+               </td>
+             </tr>
+            </tbody>
+         </table>
+       </div>
+       <br>
+       <button type="button" class="btn btn-success" (click)="inserir()">Inserir novo item</button>
+     </div>
+    </div>
+
+<div *ngIf="controlSec==2">
+    <form class="text-center border border-light p-5" [formGroup]='formGroup' (ngSubmit)='enviar()'>
+      <p class="h3 mb-4">Inserção de itens</p>
+      <div class="col-sm-6 offset-sm-3 text-center">
+          <input class="form-control" type="text" (keydown.space)="$event.preventDefault()" formControlName="codigo" placeholder="Código do produto"/>
+          <small class="form-text text-muted mb-3">Deve conter de 5 a 30 caracteres (pode possuir letras e caracteres especiais)</small>
+      </div>
+      <div class="col-sm-6 offset-sm-3 text-center">
+         <input class="form-control mb-2" type="text" (keydown.space)="$event.preventDefault()" formControlName="nome" placeholder="Nome do produto"/>
+         <small class="form-text text-muted mb-3">Deve conter de 4 a 40 caracteres</small>
+      </div>
+      <div class="form-row mb-3 ">
+          <div class="col-lg-3 offset-lg-3 text-center ">
+              <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
+              <small class="form-text text-muted">Apenas caracteres numéricos</small>
+          </div>
+          <div class="col-lg-3 text-center ">
+            <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45"/>
+            <small class="form-text text-muted">Apenas caracteres numéricos e ponto/vírgula</small>
+        </div>  
+      </div>
+      <div class="col-sm-6 offset-sm-3 text-center">
+          <input class="form-control" (keydown.space)="$event.preventDefault()" type="text" formControlName="tipo" placeholder="Tipo do produto"/>
+          <small class="form-text text-muted mb-3">Deve conter de 4 a 30 caracteres</small>
+      </div>
+      <br> 
+      <div *ngIf="formGroup.invalid">
+      <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enviar</button>
+      </div>
+      <div *ngIf="formGroup.valid">
+      <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">Enviar</button>
+      </div>
+      <br>
+      <button type="button" class="btn btn-link" (click)="retornar()">Voltar a lista de itens</button>
+  </form>
+  
+  </div>
+
+  <div *ngIf="controlSec==3">
+    <form class="text-center border border-light p-5" [formGroup]='formGroup' (ngSubmit)='atualizarItem()'>
+      <p class="h3 mb-4">Atualização de item</p>
+      <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control" type="text" (keydown.space)="$event.preventDefault()" formControlName="codigo" placeholder="Código do produto"/>
+        <small class="form-text text-muted mb-3">Deve conter de 5 a 30 caracteres (pode possuir letras e caracteres especiais)</small>
+    </div>
+    <div class="col-sm-6 offset-sm-3 text-center">
+       <input class="form-control mb-2" type="text" (keydown.space)="$event.preventDefault()" formControlName="nome" placeholder="Nome do produto"/>
+       <small class="form-text text-muted mb-3">Deve conter de 4 a 40 caracteres</small>
+    </div>
+    <div class="form-row mb-3 ">
+        <div class="col-lg-3 offset-lg-3 text-center ">
+            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
+            <small class="form-text text-muted">Apenas caracteres numéricos</small>
+        </div>
+        <div class="col-lg-3 text-center ">
+          <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45"/>
+          <small class="form-text text-muted">Apenas caracteres numéricos e ponto/vírgula</small>
+      </div>  
+    </div>
+    <div class="col-sm-6 offset-sm-3 text-center">
+        <input class="form-control" (keydown.space)="$event.preventDefault()" type="text" formControlName="tipo" placeholder="Tipo do produto"/>
+        <small class="form-text text-muted mb-3">Deve conter de 4 a 30 caracteres</small>
+    </div>
+      <br> 
+      <div *ngIf="formGroup.invalid">
+      <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Atualizar item</button>
+      </div>
+      <div *ngIf="formGroup.valid">
+      <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">Atualizar item</button>
+      </div>
+      <br>
+      <button type="button" class="btn btn-link" (click)="retornar()">Voltar a lista de itens</button>
+  </form>
+  
+  </div>
+  
