@@ -43,11 +43,11 @@
       </div>
       <div class="form-row mb-3 ">
           <div class="col-lg-3 offset-lg-3 text-center ">
-              <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
+              <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44&&event.charCode != 69&&event.charCode != 101"/>
               <small class="form-text text-muted">Apenas caracteres numéricos</small>
           </div>
           <div class="col-lg-3 text-center ">
-            <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45"/>
+            <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45&&event.charCode != 69&&event.charCode != 101"/>
             <small class="form-text text-muted">Apenas caracteres numéricos e ponto/vírgula</small>
         </div>  
       </div>
@@ -81,11 +81,11 @@
     </div>
     <div class="form-row mb-3 ">
         <div class="col-lg-3 offset-lg-3 text-center ">
-            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44"/>
+            <input class="form-control" type="number" min="0" (keydown.dot)="$event.preventDefault()"  formControlName="quantidade" placeholder="Quantia em estoque" onkeypress="return event.charCode != 45&&event.charCode != 44&&event.charCode != 69&&event.charCode != 101"/>
             <small class="form-text text-muted">Apenas caracteres numéricos</small>
         </div>
         <div class="col-lg-3 text-center ">
-          <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45"/>
+          <input class="form-control" type="number"  min="0" formControlName="preço" placeholder="Preço unitário" onkeypress="return event.charCode != 45&&event.charCode != 69&&event.charCode != 101"/>
           <small class="form-text text-muted">Apenas caracteres numéricos e ponto/vírgula</small>
       </div>  
     </div>
